@@ -49,7 +49,7 @@ public class PreviewAdapter extends PagerAdapter {
         mContext = context;
         mItems = new ArrayList<>();
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        mPreviewSize = Math.min((displayMetrics.widthPixels + displayMetrics.heightPixels) / 2, DEFAULT_PREVIEW_SIZE);
+        mPreviewSize = Math.min((displayMetrics.widthPixels + displayMetrics.heightPixels) / 3, DEFAULT_PREVIEW_SIZE);
     }
 
     public void refresh(@NonNull Collection<File> items) {
