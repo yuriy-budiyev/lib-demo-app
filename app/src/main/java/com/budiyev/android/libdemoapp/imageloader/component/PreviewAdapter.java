@@ -62,7 +62,7 @@ public class PreviewAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_preview_image, container, false);
-        ImageLoader.with(mContext).from(mItems.get(position)).size(mPreviewSize, mPreviewSize)
+        ImageLoader.with(mContext).from(mItems.get(position)).noStorageCache().size(mPreviewSize, mPreviewSize)
                 .load(view.findViewById(R.id.image));
         container.addView(view);
         return view;
