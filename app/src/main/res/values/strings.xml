@@ -6,7 +6,6 @@
     <string name="code_scanner">Code Scanner</string>
     <string name="circular_progress_bar">Circular Progress Bar</string>
     <string name="scan_result">Scan result</string>
-    <string name="code_format">Code format: %s</string>
     <string name="scanner_error">Scanner error: %s</string>
     <string name="close">Close</string>
     <string name="indeterminate">Indeterminate</string>
