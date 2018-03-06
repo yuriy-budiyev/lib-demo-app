@@ -40,8 +40,7 @@ public class ScanResultDialog extends AppCompatDialog {
         //noinspection ConstantConditions
         ((TextView) findViewById(R.id.result)).setText(result.getText());
         //noinspection ConstantConditions
-        ((TextView) findViewById(R.id.format))
-                .setText(context.getString(R.string.code_format, result.getBarcodeFormat()));
+        ((TextView) findViewById(R.id.format)).setText(String.valueOf(result.getBarcodeFormat()));
         //noinspection ConstantConditions
         findViewById(R.id.close).setOnClickListener(v -> dismiss());
     }
