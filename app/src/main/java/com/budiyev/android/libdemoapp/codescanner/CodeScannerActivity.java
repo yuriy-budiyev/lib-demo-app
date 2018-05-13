@@ -87,7 +87,7 @@ public class CodeScannerActivity extends BaseActivity {
 
     @Override
     protected void onPause() {
-        mCodeScanner.stopPreview();
+        mCodeScanner.releaseResources();
         super.onPause();
     }
 }
