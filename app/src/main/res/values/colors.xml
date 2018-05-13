@@ -2,4 +2,5 @@
 <resources>
     <color name="primary">#ff000000</color>
     <color name="accent">#ffffffff</color>
+    <color name="ic_launcher_background">@color/accent</color>
 </resources>
