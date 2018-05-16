@@ -42,7 +42,7 @@ import com.budiyev.android.libdemoapp.R;
 import com.budiyev.android.libdemoapp.imageloader.PreviewActivity;
 
 public class GalleryViewHolder extends RecyclerView.ViewHolder {
-    private static final int DEFAULT_IMAGE_SIZE = 384;
+    private static final int DEFAULT_THUMB_SIZE = 400;
     private final Context mContext;
     private final ImageView mImageView;
     private final int mImageSize;
@@ -51,7 +51,7 @@ public class GalleryViewHolder extends RecyclerView.ViewHolder {
         super(LayoutInflater.from(context).inflate(R.layout.item_gallery_image, parent, false));
         mContext = context;
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        mImageSize = Math.min((displayMetrics.widthPixels + displayMetrics.heightPixels) / 8, DEFAULT_IMAGE_SIZE);
+        mImageSize = Math.min((displayMetrics.widthPixels + displayMetrics.heightPixels) / 8, DEFAULT_THUMB_SIZE);
         mImageView = itemView.findViewById(R.id.image);
         mImageView.setOnClickListener(v -> context.startActivity(new Intent(context, PreviewActivity.class)
                 .putExtra(PreviewActivity.EXTRA_POSITION, getAdapterPosition())));

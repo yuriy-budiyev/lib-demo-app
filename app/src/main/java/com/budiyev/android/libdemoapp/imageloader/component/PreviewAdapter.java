@@ -40,7 +40,7 @@ import com.budiyev.android.imageloader.ImageLoader;
 import com.budiyev.android.libdemoapp.R;
 
 public class PreviewAdapter extends PagerAdapter {
-    private static final int DEFAULT_PREVIEW_SIZE = 1536;
+    private static final int DEFAULT_PREVIEW_SIZE = 1600;
     private final Context mContext;
     private final List<File> mItems;
     private final int mPreviewSize;
