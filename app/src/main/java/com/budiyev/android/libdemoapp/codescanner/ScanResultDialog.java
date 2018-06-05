@@ -23,6 +23,8 @@
  */
 package com.budiyev.android.libdemoapp.codescanner;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDialog;
@@ -41,6 +43,12 @@ public class ScanResultDialog extends AppCompatDialog {
         ((TextView) findViewById(R.id.result)).setText(result.getText());
         //noinspection ConstantConditions
         ((TextView) findViewById(R.id.format)).setText(String.valueOf(result.getBarcodeFormat()));
+        //noinspection ConstantConditions
+        findViewById(R.id.copy).setOnClickListener(v -> {
+            //noinspection ConstantConditions
+            ((ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE))
+                    .setPrimaryClip(ClipData.newPlainText(null, result.getText()));
+        });
         //noinspection ConstantConditions
         findViewById(R.id.close).setOnClickListener(v -> dismiss());
     }
