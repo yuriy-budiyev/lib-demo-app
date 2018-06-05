@@ -50,6 +50,7 @@ public class ScanResultDialog extends AppCompatDialog {
             ((ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE))
                     .setPrimaryClip(ClipData.newPlainText(null, result.getText()));
             Toast.makeText(context, R.string.copied_to_clipboard, Toast.LENGTH_LONG).show();
+            dismiss();
         });
         //noinspection ConstantConditions
         findViewById(R.id.close).setOnClickListener(v -> dismiss());
