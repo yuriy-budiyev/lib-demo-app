@@ -9,6 +9,7 @@
     <string name="scanner_error">Scanner error: %s</string>
     <string name="close">Close</string>
     <string name="copy">Copy</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
     <string name="indeterminate">Indeterminate</string>
     <string name="draw_background_stroke">Draw background stroke</string>
 </resources>

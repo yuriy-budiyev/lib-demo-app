@@ -30,6 +30,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDialog;
 import android.util.TypedValue;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.budiyev.android.libdemoapp.R;
 import com.google.zxing.Result;
@@ -48,6 +49,7 @@ public class ScanResultDialog extends AppCompatDialog {
             //noinspection ConstantConditions
             ((ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE))
                     .setPrimaryClip(ClipData.newPlainText(null, result.getText()));
+            Toast.makeText(context, R.string.copied_to_clipboard, Toast.LENGTH_LONG).show();
         });
         //noinspection ConstantConditions
         findViewById(R.id.close).setOnClickListener(v -> dismiss());
