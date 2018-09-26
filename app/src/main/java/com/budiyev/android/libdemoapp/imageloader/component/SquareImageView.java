@@ -24,8 +24,9 @@
 package com.budiyev.android.libdemoapp.imageloader.component;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
+
+import androidx.appcompat.widget.AppCompatImageView;
 
 public class SquareImageView extends AppCompatImageView {
     public SquareImageView(Context context) {

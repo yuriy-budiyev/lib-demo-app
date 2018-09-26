@@ -26,12 +26,12 @@ package com.budiyev.android.libdemoapp.codescanner;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatDialog;
 import android.util.TypedValue;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDialog;
 import com.budiyev.android.libdemoapp.R;
 import com.google.zxing.Result;
 
@@ -58,7 +58,7 @@ public class ScanResultDialog extends AppCompatDialog {
 
     private static int resolveDialogTheme(@NonNull Context context) {
         TypedValue outValue = new TypedValue();
-        context.getTheme().resolveAttribute(android.support.v7.appcompat.R.attr.alertDialogTheme, outValue, true);
+        context.getTheme().resolveAttribute(androidx.appcompat.R.attr.alertDialogTheme, outValue, true);
         return outValue.resourceId;
     }
 }

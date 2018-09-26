@@ -29,13 +29,13 @@ import java.util.Collection;
 import java.util.List;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
 import com.budiyev.android.imageloader.ImageLoader;
 import com.budiyev.android.libdemoapp.R;
 

@@ -24,10 +24,10 @@
 package com.budiyev.android.libdemoapp.circularprogressbar;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.widget.CheckBox;
 import android.widget.SeekBar;
 
+import androidx.annotation.Nullable;
 import com.budiyev.android.circularprogressbar.CircularProgressBar;
 import com.budiyev.android.libdemoapp.R;
 import com.budiyev.android.libdemoapp.base.BaseActivity;
