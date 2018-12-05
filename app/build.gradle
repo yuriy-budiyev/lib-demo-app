@@ -30,5 +30,5 @@ dependencies {
     implementation 'com.budiyev.android:code-scanner:2.0.1'
     implementation 'com.budiyev.android:image-loader:2.5.6'
     implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
 }
