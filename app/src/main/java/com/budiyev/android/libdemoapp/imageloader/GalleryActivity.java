@@ -62,15 +62,17 @@ public class GalleryActivity extends BaseActivity implements LoaderManager.Loade
         setContentView(R.layout.activity_gallery);
         RecyclerView galleryView = findViewById(R.id.gallery);
         galleryView.setLayoutManager(new GridLayoutManager(this,
-                getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ?
-                        COLUMN_COUNT_LANDSCAPE : COLUMN_COUNT_PORTRAIT));
+                getResources().getConfiguration().orientation ==
+                        Configuration.ORIENTATION_LANDSCAPE ? COLUMN_COUNT_LANDSCAPE :
+                        COLUMN_COUNT_PORTRAIT));
         mGalleryAdapter = new GalleryAdapter(this);
         galleryView.setAdapter(mGalleryAdapter);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
                 PackageManager.PERMISSION_GRANTED) {
             getSupportLoaderManager().initLoader(0, null, this);
         } else {
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},
+            ActivityCompat.requestPermissions(this,
+                    new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     RC_STORAGE_PERMISSION);
         }
     }
@@ -89,8 +91,8 @@ public class GalleryActivity extends BaseActivity implements LoaderManager.Loade
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        return new CursorLoader(this, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, PROJECTION, null, null,
-                MediaStore.Images.Media.DATE_TAKEN + " DESC");
+        return new CursorLoader(this, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, PROJECTION,
+                null, null, MediaStore.Images.Media.DATE_TAKEN + " DESC");
     }
 
     @Override

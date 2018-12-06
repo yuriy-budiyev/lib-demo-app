@@ -60,7 +60,8 @@ public class PreviewActivity extends BaseActivity implements LoaderManager.Loade
         }
         mPosition = position;
         mPreviewPager = findViewById(R.id.preview);
-        mPreviewPager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.preview_page_margin));
+        mPreviewPager
+                .setPageMargin(getResources().getDimensionPixelOffset(R.dimen.preview_page_margin));
         mPreviewAdapter = new PreviewAdapter(this);
         getSupportLoaderManager().initLoader(0, null, this);
     }
@@ -68,8 +69,8 @@ public class PreviewActivity extends BaseActivity implements LoaderManager.Loade
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        return new CursorLoader(this, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, PROJECTION, null, null,
-                MediaStore.Images.Media.DATE_TAKEN + " DESC");
+        return new CursorLoader(this, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, PROJECTION,
+                null, null, MediaStore.Images.Media.DATE_TAKEN + " DESC");
     }
 
     @Override

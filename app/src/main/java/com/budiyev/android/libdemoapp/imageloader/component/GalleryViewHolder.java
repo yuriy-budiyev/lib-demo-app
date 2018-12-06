@@ -32,7 +32,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,21 +43,21 @@ import com.budiyev.android.libdemoapp.imageloader.PreviewActivity;
 public class GalleryViewHolder extends RecyclerView.ViewHolder {
     private static final int DEFAULT_THUMB_SIZE = 400;
     private final Context mContext;
-    private final ImageView mImageView;
     private final int mImageSize;
 
     public GalleryViewHolder(@NonNull Context context, @Nullable ViewGroup parent) {
         super(LayoutInflater.from(context).inflate(R.layout.item_gallery_image, parent, false));
         mContext = context;
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        mImageSize = Math.min((displayMetrics.widthPixels + displayMetrics.heightPixels) / 8, DEFAULT_THUMB_SIZE);
-        mImageView = itemView.findViewById(R.id.image);
-        mImageView.setOnClickListener(v -> context.startActivity(new Intent(context, PreviewActivity.class)
-                .putExtra(PreviewActivity.EXTRA_POSITION, getAdapterPosition())));
+        mImageSize = Math.min((displayMetrics.widthPixels + displayMetrics.heightPixels) / 8,
+                DEFAULT_THUMB_SIZE);
+        itemView.setOnClickListener(v -> context.startActivity(
+                new Intent(context, PreviewActivity.class)
+                        .putExtra(PreviewActivity.EXTRA_POSITION, getAdapterPosition())));
     }
 
     public void bind(@NonNull File file) {
-        ImageLoader.with(mContext).from(file).size(mImageSize, mImageSize).placeholder(new ColorDrawable(Color.LTGRAY))
-                .load(mImageView);
+        ImageLoader.with(mContext).from(file).size(mImageSize, mImageSize)
+                .placeholder(new ColorDrawable(Color.LTGRAY)).load(itemView);
     }
 }
