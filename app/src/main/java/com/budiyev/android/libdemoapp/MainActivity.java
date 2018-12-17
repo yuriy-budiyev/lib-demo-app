@@ -36,11 +36,10 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.image_loader)
-                .setOnClickListener(v -> startActivity(new Intent(this, GalleryActivity.class)));
-        findViewById(R.id.code_scanner).setOnClickListener(
-                v -> startActivity(new Intent(this, CodeScannerActivity.class)));
-        findViewById(R.id.circular_progress_bar).setOnClickListener(
-                v -> startActivity(new Intent(this, CircularProgressBarActivity.class)));
+        findViewById(R.id.image_loader).setOnClickListener(v -> startActivity(new Intent(this, GalleryActivity.class)));
+        findViewById(R.id.code_scanner)
+                .setOnClickListener(v -> startActivity(new Intent(this, CodeScannerActivity.class)));
+        findViewById(R.id.circular_progress_bar)
+                .setOnClickListener(v -> startActivity(new Intent(this, CircularProgressBarActivity.class)));
     }
 }

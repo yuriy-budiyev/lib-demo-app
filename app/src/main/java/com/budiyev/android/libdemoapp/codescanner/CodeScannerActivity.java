@@ -50,12 +50,10 @@ public class CodeScannerActivity extends BaseActivity {
             dialog.setOnDismissListener(d -> mCodeScanner.startPreview());
             dialog.show();
         }));
-        mCodeScanner.setErrorCallback(error -> runOnUiThread(() -> Toast
-                .makeText(this, getString(R.string.scanner_error, error), Toast.LENGTH_LONG)
-                .show()));
+        mCodeScanner.setErrorCallback(error -> runOnUiThread(
+                () -> Toast.makeText(this, getString(R.string.scanner_error, error), Toast.LENGTH_LONG).show()));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.CAMERA) !=
-                    PackageManager.PERMISSION_GRANTED) {
+            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 mPermissionGranted = false;
                 requestPermissions(new String[] {Manifest.permission.CAMERA}, RC_PERMISSION);
             } else {

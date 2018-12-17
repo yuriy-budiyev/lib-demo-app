@@ -49,15 +49,13 @@ public class GalleryViewHolder extends RecyclerView.ViewHolder {
         super(LayoutInflater.from(context).inflate(R.layout.item_gallery_image, parent, false));
         mContext = context;
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        mImageSize = Math.min((displayMetrics.widthPixels + displayMetrics.heightPixels) / 8,
-                DEFAULT_THUMB_SIZE);
-        itemView.setOnClickListener(v -> context.startActivity(
-                new Intent(context, PreviewActivity.class)
-                        .putExtra(PreviewActivity.EXTRA_POSITION, getAdapterPosition())));
+        mImageSize = Math.min((displayMetrics.widthPixels + displayMetrics.heightPixels) / 8, DEFAULT_THUMB_SIZE);
+        itemView.setOnClickListener(v -> context.startActivity(new Intent(context, PreviewActivity.class)
+                .putExtra(PreviewActivity.EXTRA_POSITION, getAdapterPosition())));
     }
 
     public void bind(@NonNull File file) {
-        ImageLoader.with(mContext).from(file).size(mImageSize, mImageSize)
-                .placeholder(new ColorDrawable(Color.LTGRAY)).load(itemView);
+        ImageLoader.with(mContext).from(file).size(mImageSize, mImageSize).placeholder(new ColorDrawable(Color.LTGRAY))
+                .load(itemView);
     }
 }

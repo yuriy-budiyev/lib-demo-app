@@ -38,24 +38,23 @@ public class CircularProgressBarActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circular_progress_bar);
         CircularProgressBar progressBar = findViewById(R.id.progress_bar);
-        ((SeekBar) findViewById(R.id.progress))
-                .setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                    @Override
-                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                        progressBar.setProgress(progress);
-                    }
+        ((SeekBar) findViewById(R.id.progress)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressBar.setProgress(progress);
+            }
 
-                    @Override
-                    public void onStartTrackingTouch(SeekBar seekBar) {
-                    }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
-                    @Override
-                    public void onStopTrackingTouch(SeekBar seekBar) {
-                    }
-                });
-        ((CheckBox) findViewById(R.id.indeterminate)).setOnCheckedChangeListener(
-                (buttonView, isChecked) -> progressBar.setIndeterminate(isChecked));
-        ((CheckBox) findViewById(R.id.draw_background_stroke)).setOnCheckedChangeListener(
-                (buttonView, isChecked) -> progressBar.setDrawBackgroundStroke(isChecked));
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+        ((CheckBox) findViewById(R.id.indeterminate))
+                .setOnCheckedChangeListener((buttonView, isChecked) -> progressBar.setIndeterminate(isChecked));
+        ((CheckBox) findViewById(R.id.draw_background_stroke))
+                .setOnCheckedChangeListener((buttonView, isChecked) -> progressBar.setDrawBackgroundStroke(isChecked));
     }
 }

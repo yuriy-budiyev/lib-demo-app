@@ -49,8 +49,7 @@ public class PreviewAdapter extends PagerAdapter {
         mContext = context;
         mItems = new ArrayList<>();
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        mPreviewSize = Math.min((displayMetrics.widthPixels + displayMetrics.heightPixels) / 3,
-                DEFAULT_PREVIEW_SIZE);
+        mPreviewSize = Math.min((displayMetrics.widthPixels + displayMetrics.heightPixels) / 3, DEFAULT_PREVIEW_SIZE);
     }
 
     public void refresh(@NonNull Collection<File> items) {
@@ -62,10 +61,9 @@ public class PreviewAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        View view = LayoutInflater.from(mContext)
-                .inflate(R.layout.item_preview_image, container, false);
-        ImageLoader.with(mContext).from(mItems.get(position)).noStorageCache()
-                .size(mPreviewSize, mPreviewSize).load(view);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_preview_image, container, false);
+        ImageLoader.with(mContext).from(mItems.get(position)).noStorageCache().size(mPreviewSize, mPreviewSize)
+                .load(view);
         container.addView(view);
         return view;
     }
