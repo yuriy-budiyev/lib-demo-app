@@ -26,7 +26,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.budiyev.android:circular-progress-bar:1.2.1'
+    implementation 'com.budiyev.android:circular-progress-bar:1.2.2'
     implementation 'com.budiyev.android:code-scanner:2.1.0'
     implementation 'com.budiyev.android:image-loader:2.5.6'
     implementation 'com.google.android.material:material:1.0.0'
