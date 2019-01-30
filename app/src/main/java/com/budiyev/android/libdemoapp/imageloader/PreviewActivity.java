@@ -45,7 +45,7 @@ public class PreviewActivity extends BaseActivity implements LoaderManager.Loade
     private static final String[] PROJECTION =
             new String[] {MediaStore.Images.Media._ID, MediaStore.Images.Media.DATE_TAKEN,
                     MediaStore.Images.Media.DATA};
-    public static String EXTRA_POSITION = "position";
+    public static final String EXTRA_POSITION = "position";
     private ViewPager mPreviewPager;
     private int mPosition;
     private PreviewAdapter mPreviewAdapter;
@@ -62,7 +62,7 @@ public class PreviewActivity extends BaseActivity implements LoaderManager.Loade
         mPreviewPager = findViewById(R.id.preview);
         mPreviewPager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.preview_page_margin));
         mPreviewAdapter = new PreviewAdapter(this);
-        getSupportLoaderManager().initLoader(0, null, this);
+        LoaderManager.getInstance(this).initLoader(0, null, this);
     }
 
     @NonNull

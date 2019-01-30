@@ -68,7 +68,7 @@ public class GalleryActivity extends BaseActivity implements LoaderManager.Loade
         galleryView.setAdapter(mGalleryAdapter);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
                 PackageManager.PERMISSION_GRANTED) {
-            getSupportLoaderManager().initLoader(0, null, this);
+            LoaderManager.getInstance(this).initLoader(0, null, this);
         } else {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     RC_STORAGE_PERMISSION);
@@ -81,7 +81,7 @@ public class GalleryActivity extends BaseActivity implements LoaderManager.Loade
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == RC_STORAGE_PERMISSION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getSupportLoaderManager().initLoader(0, null, this);
+                LoaderManager.getInstance(this).initLoader(0, null, this);
             }
         }
     }
