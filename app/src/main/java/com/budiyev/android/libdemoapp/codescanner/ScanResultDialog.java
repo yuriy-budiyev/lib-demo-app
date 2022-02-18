@@ -46,7 +46,6 @@ public class ScanResultDialog extends AppCompatDialog {
         ((TextView) findViewById(R.id.format)).setText(String.valueOf(result.getBarcodeFormat()));
         //noinspection ConstantConditions
         findViewById(R.id.copy).setOnClickListener(v -> {
-            //noinspection ConstantConditions
             ((ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE))
                     .setPrimaryClip(ClipData.newPlainText(null, result.getText()));
             Toast.makeText(context, R.string.copied_to_clipboard, Toast.LENGTH_LONG).show();
@@ -58,7 +57,8 @@ public class ScanResultDialog extends AppCompatDialog {
 
     private static int resolveDialogTheme(@NonNull Context context) {
         TypedValue outValue = new TypedValue();
-        context.getTheme().resolveAttribute(androidx.appcompat.R.attr.alertDialogTheme, outValue, true);
+        context.getTheme()
+                .resolveAttribute(androidx.appcompat.R.attr.alertDialogTheme, outValue, true);
         return outValue.resourceId;
     }
 }

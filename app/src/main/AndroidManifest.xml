@@ -17,7 +17,10 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -26,19 +29,19 @@
         </activity>
 
         <activity
-            android:label="@string/activity_gallery"
-            android:name=".imageloader.GalleryActivity"/>
+            android:name=".imageloader.GalleryActivity"
+            android:label="@string/activity_gallery"/>
 
         <activity
-            android:label="@string/activity_preview"
-            android:name=".imageloader.PreviewActivity"/>
+            android:name=".imageloader.PreviewActivity"
+            android:label="@string/activity_preview"/>
 
         <activity
-            android:label="@string/code_scanner"
-            android:name=".codescanner.CodeScannerActivity"/>
+            android:name=".codescanner.CodeScannerActivity"
+            android:label="@string/code_scanner"/>
 
         <activity
-            android:label="@string/circular_progress_bar"
-            android:name=".circularprogressbar.CircularProgressBarActivity"/>
+            android:name=".circularprogressbar.CircularProgressBarActivity"
+            android:label="@string/circular_progress_bar"/>
     </application>
 </manifest>
