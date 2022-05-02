@@ -21,47 +21,45 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.budiyev.android.libdemoapp.imageloader.component;
+package com.budiyev.android.libdemoapp.imageloader.component
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import android.annotation.SuppressLint
+import android.content.Context
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import java.io.File
 
-import android.content.Context;
-import android.view.ViewGroup;
+class GalleryAdapter(private val context: Context): RecyclerView.Adapter<GalleryViewHolder>() {
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-public class GalleryAdapter extends RecyclerView.Adapter<GalleryViewHolder> {
-    private final Context mContext;
-    private final List<File> mItems;
-
-    public GalleryAdapter(@NonNull Context context) {
-        mContext = context;
-        mItems = new ArrayList<>();
+    @SuppressLint("NotifyDataSetChanged")
+    fun refresh(items: Collection<File>) {
+        this.items.clear()
+        this.items.addAll(items)
+        notifyDataSetChanged()
     }
 
-    public void refresh(@NonNull Collection<File> items) {
-        mItems.clear();
-        mItems.addAll(items);
-        notifyDataSetChanged();
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): GalleryViewHolder =
+        GalleryViewHolder(
+            context,
+            parent
+        )
+
+    override fun onBindViewHolder(
+        holder: GalleryViewHolder,
+        position: Int
+    ) {
+        holder.bind(items[position])
     }
 
-    @NonNull
-    @Override
-    public GalleryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new GalleryViewHolder(mContext, parent);
-    }
+    override fun getItemCount(): Int =
+        items.size
 
-    @Override
-    public void onBindViewHolder(@NonNull GalleryViewHolder holder, int position) {
-        holder.bind(mItems.get(position));
-    }
+    private val items: MutableList<File>
 
-    @Override
-    public int getItemCount() {
-        return mItems.size();
+    init {
+        items = ArrayList()
     }
 }

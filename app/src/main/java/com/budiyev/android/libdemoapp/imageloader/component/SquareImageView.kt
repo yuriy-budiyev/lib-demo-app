@@ -21,31 +21,46 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.budiyev.android.libdemoapp.imageloader.component;
+package com.budiyev.android.libdemoapp.imageloader.component
 
-import android.content.Context;
-import android.util.AttributeSet;
+import android.content.Context
+import android.util.AttributeSet
+import androidx.appcompat.widget.AppCompatImageView
 
-import androidx.appcompat.widget.AppCompatImageView;
+class SquareImageView: AppCompatImageView {
 
-public class SquareImageView extends AppCompatImageView {
-    public SquareImageView(Context context) {
-        super(context);
-    }
+    constructor(context: Context): super(context)
 
-    public SquareImageView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
+    constructor(
+        context: Context,
+        attrs: AttributeSet?
+    ): super(
+        context,
+        attrs
+    )
 
-    public SquareImageView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
+    constructor(
+        context: Context,
+        attrs: AttributeSet?,
+        defStyleAttr: Int
+    ): super(
+        context,
+        attrs,
+        defStyleAttr
+    )
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int measuredWidth = getMeasuredWidth();
-        //noinspection SuspiciousNameCombination
-        setMeasuredDimension(measuredWidth, measuredWidth);
+    override fun onMeasure(
+        widthMeasureSpec: Int,
+        heightMeasureSpec: Int
+    ) {
+        super.onMeasure(
+            widthMeasureSpec,
+            heightMeasureSpec
+        )
+        val measuredWidth = measuredWidth
+        setMeasuredDimension(
+            measuredWidth,
+            measuredWidth
+        )
     }
 }
