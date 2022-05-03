@@ -27,6 +27,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.core.app.ActivityCompat
@@ -39,7 +40,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.budiyev.android.libdemoapp.R
 import com.budiyev.android.libdemoapp.base.BaseActivity
 import com.budiyev.android.libdemoapp.imageloader.component.GalleryAdapter
-import java.io.File
 
 class GalleryActivity: BaseActivity(), LoaderManager.LoaderCallbacks<Cursor?> {
 
@@ -83,7 +83,7 @@ class GalleryActivity: BaseActivity(), LoaderManager.LoaderCallbacks<Cursor?> {
             grantResults
         )
         if (requestCode == RC_STORAGE_PERMISSION) {
-            if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 LoaderManager.getInstance(this).initLoader(
                     0,
                     null,
@@ -100,7 +100,10 @@ class GalleryActivity: BaseActivity(), LoaderManager.LoaderCallbacks<Cursor?> {
         return CursorLoader(
             this,
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-            PROJECTION,
+            arrayOf(
+                MediaStore.Images.Media._ID,
+                MediaStore.Images.Media.DATE_TAKEN
+            ),
             null,
             null,
             MediaStore.Images.Media.DATE_TAKEN + " DESC"
@@ -112,14 +115,15 @@ class GalleryActivity: BaseActivity(), LoaderManager.LoaderCallbacks<Cursor?> {
         cursor: Cursor?
     ) {
         if (cursor != null) {
-            val images: MutableList<File> = ArrayList()
+            val images: MutableList<Uri> = ArrayList()
             if (cursor.moveToFirst()) {
-                val dataColumn = cursor.getColumnIndex(MediaStore.Images.Media.DATA)
+                val idColumn = cursor.getColumnIndex(MediaStore.Images.Media._ID)
                 do {
-                    val data = cursor.getString(dataColumn)
-                    if (data != null) {
-                        images.add(File(data))
-                    }
+                    val id = cursor.getLong(idColumn)
+                    images += Uri.withAppendedPath(
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                        id.toString()
+                    )
                 } while (cursor.moveToNext())
             }
             galleryAdapter.refresh(images)
@@ -133,12 +137,6 @@ class GalleryActivity: BaseActivity(), LoaderManager.LoaderCallbacks<Cursor?> {
     private lateinit var galleryAdapter: GalleryAdapter
 
     companion object {
-
-        private val PROJECTION = arrayOf(
-            MediaStore.Images.Media._ID,
-            MediaStore.Images.Media.DATE_TAKEN,
-            MediaStore.Images.Media.DATA
-        )
 
         private const val COLUMN_COUNT_PORTRAIT = 3
         private const val COLUMN_COUNT_LANDSCAPE = 5

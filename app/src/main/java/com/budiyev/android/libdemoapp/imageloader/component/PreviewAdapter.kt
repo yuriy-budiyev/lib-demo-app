@@ -24,17 +24,17 @@
 package com.budiyev.android.libdemoapp.imageloader.component
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.budiyev.android.imageloader.ImageLoader
 import com.budiyev.android.libdemoapp.R
-import java.io.File
 
 class PreviewAdapter(private val context: Context): PagerAdapter() {
 
-    fun refresh(items: Collection<File>) {
+    fun refresh(items: Collection<Uri>) {
         this.items.clear()
         this.items.addAll(items)
         notifyDataSetChanged()
@@ -74,7 +74,7 @@ class PreviewAdapter(private val context: Context): PagerAdapter() {
     override fun getCount(): Int =
         items.size
 
-    private val items: MutableList<File>
+    private val items: MutableList<Uri>
     private val previewSize: Int
 
     init {

@@ -27,13 +27,13 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.budiyev.android.imageloader.ImageLoader
 import com.budiyev.android.libdemoapp.R
 import com.budiyev.android.libdemoapp.imageloader.PreviewActivity
-import java.io.File
 
 class GalleryViewHolder(
     private val context: Context,
@@ -46,11 +46,11 @@ class GalleryViewHolder(
     )
 ) {
 
-    fun bind(file: File) {
-        ImageLoader.with(context).from(file).size(
+    fun bind(uri: Uri) {
+        ImageLoader.with(context).from(uri).size(
             imageSize,
             imageSize
-        ).placeholder(ColorDrawable(Color.LTGRAY)).load(itemView)
+        ).noStorageCache().placeholder(ColorDrawable(Color.LTGRAY)).load(itemView)
     }
 
     private val imageSize: Int

@@ -25,14 +25,14 @@ package com.budiyev.android.libdemoapp.imageloader.component
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.net.Uri
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import java.io.File
 
 class GalleryAdapter(private val context: Context): RecyclerView.Adapter<GalleryViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
-    fun refresh(items: Collection<File>) {
+    fun refresh(items: Collection<Uri>) {
         this.items.clear()
         this.items.addAll(items)
         notifyDataSetChanged()
@@ -57,7 +57,7 @@ class GalleryAdapter(private val context: Context): RecyclerView.Adapter<Gallery
     override fun getItemCount(): Int =
         items.size
 
-    private val items: MutableList<File>
+    private val items: MutableList<Uri>
 
     init {
         items = ArrayList()

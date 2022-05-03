@@ -24,6 +24,7 @@
 package com.budiyev.android.libdemoapp.imageloader
 
 import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.loader.app.LoaderManager
@@ -33,7 +34,6 @@ import androidx.viewpager.widget.ViewPager
 import com.budiyev.android.libdemoapp.R
 import com.budiyev.android.libdemoapp.base.BaseActivity
 import com.budiyev.android.libdemoapp.imageloader.component.PreviewAdapter
-import java.io.File
 
 class PreviewActivity: BaseActivity(), LoaderManager.LoaderCallbacks<Cursor?> {
 
@@ -63,7 +63,10 @@ class PreviewActivity: BaseActivity(), LoaderManager.LoaderCallbacks<Cursor?> {
         return CursorLoader(
             this,
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-            PROJECTION,
+            arrayOf(
+                MediaStore.Images.Media._ID,
+                MediaStore.Images.Media.DATE_TAKEN
+            ),
             null,
             null,
             MediaStore.Images.Media.DATE_TAKEN + " DESC"
@@ -75,14 +78,15 @@ class PreviewActivity: BaseActivity(), LoaderManager.LoaderCallbacks<Cursor?> {
         cursor: Cursor?
     ) {
         if (cursor != null) {
-            val images: MutableList<File> = ArrayList()
+            val images: MutableList<Uri> = ArrayList()
             if (cursor.moveToFirst()) {
-                val dataColumn = cursor.getColumnIndex(MediaStore.Images.Media.DATA)
+                val idColumn = cursor.getColumnIndex(MediaStore.Images.Media._ID)
                 do {
-                    val data = cursor.getString(dataColumn)
-                    if (data != null) {
-                        images.add(File(data))
-                    }
+                    val id = cursor.getLong(idColumn)
+                    images += Uri.withAppendedPath(
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                        id.toString()
+                    )
                 } while (cursor.moveToNext())
             }
             previewAdapter.refresh(images)
@@ -100,12 +104,6 @@ class PreviewActivity: BaseActivity(), LoaderManager.LoaderCallbacks<Cursor?> {
     private var position: Int = 0
 
     companion object {
-
-        private val PROJECTION = arrayOf(
-            MediaStore.Images.Media._ID,
-            MediaStore.Images.Media.DATE_TAKEN,
-            MediaStore.Images.Media.DATA
-        )
 
         const val EXTRA_POSITION = "position"
     }
