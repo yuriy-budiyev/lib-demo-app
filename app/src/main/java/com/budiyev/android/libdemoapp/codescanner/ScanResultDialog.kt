@@ -61,7 +61,9 @@ class ScanResultDialog(
             ).show()
             dismiss()
         }
-        findViewById<View>(R.id.close)!!.setOnClickListener { dismiss() }
+        findViewById<View>(R.id.close)!!.setOnClickListener {
+            dismiss()
+        }
     }
 
     companion object {
