@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.budiyev.android.codescanner.CodeScannerView
         android:id="@+id/scanner"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        app:frameVerticalBias="0.35">
+
+        <TextView
+            android:id="@+id/scanner_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingTop="32dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
+            android:text="@string/code_scan_hint"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"/>
+    </com.budiyev.android.codescanner.CodeScannerView>
 </FrameLayout>

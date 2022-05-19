@@ -27,6 +27,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
@@ -40,12 +41,17 @@ class CodeScannerActivity: BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_code_scanner)
+        hintView = findViewById(R.id.scanner_hint)
         codeScanner = CodeScanner(
             this,
             findViewById(R.id.scanner)
         )
         codeScanner.decodeCallback = DecodeCallback { result: Result ->
             runOnUiThread {
+                hintView.text = getString(
+                    R.string.code_scan_last,
+                    result.text
+                )
                 val dialog = ScanResultDialog(
                     this,
                     result
@@ -116,6 +122,7 @@ class CodeScannerActivity: BaseActivity() {
     }
 
     private lateinit var codeScanner: CodeScanner
+    private lateinit var hintView: TextView
     private var isPermissionGranted: Boolean = false
 
     companion object {
