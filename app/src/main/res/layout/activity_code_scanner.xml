@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         app:frameCornersSize="32dp"
         app:frameCornersRadius="8dp"
+        app:frameCornersCapRounded="true"
         app:frameVerticalBias="0.35">
 
         <TextView
